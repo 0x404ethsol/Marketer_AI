@@ -1,0 +1,652 @@
+{
+  "project": {
+    "name": "MARKETER_AI",
+    "description": "Ultimate AI-powered marketing automation platform to crush GoHighLevel",
+    "version": "1.0.0",
+    "created": "2025-02-01",
+    "target_location": "D:\\MARKET_AI"
+  },
+
+  "vision": {
+    "tagline": "Pre-equipped AI agents with 95+ marketing skills that make users say 'WTF this is too good'",
+    "core_differentiators": [
+      "Pre-loaded marketing mastery from 95+ Skills.sh skills",
+      "CrewAI multi-agent orchestration with autonomous crews",
+      "AI-generated Remotion video code (not templates)",
+      "70+ psychology mental models baked into agents",
+      "April Dunford positioning methodology built-in",
+      "BANT/MEDDIC lead scoring automation",
+      "Bounded CUA for real computer actions"
+    ],
+    "target_competitors": ["GoHighLevel", "HubSpot", "Jasper", "Copy.ai"]
+  },
+
+  "tech_stack": {
+    "frontend": {
+      "framework": "Next.js 14 (App Router)",
+      "ui_library": "shadcn/ui + Radix UI",
+      "styling": "Tailwind CSS",
+      "animations": "Framer Motion",
+      "state": "TanStack React Query + React Context",
+      "deployment": "Vercel"
+    },
+    "backend": {
+      "database": "Supabase (Postgres + Auth + Storage)",
+      "agent_engine": "CrewAI (Python)",
+      "primary_llm": "Claude Opus 4",
+      "fast_llm": "Claude Sonnet 4",
+      "multimodal_llm": "Kimi K2.5 (Moonshot AI)",
+      "payments": "Stripe"
+    },
+    "video": {
+      "framework": "Remotion",
+      "avatars": "HeyGen API",
+      "fast_generation": "InVideo API",
+      "post_processing": "Shotstack API"
+    },
+    "automation": {
+      "workflows": "n8n",
+      "bounded_cua": "trycua/cua"
+    }
+  },
+
+  "folder_structure": {
+    "root": "D:\\MARKET_AI",
+    "structure": {
+      "apps": {
+        "web": {
+          "src": {
+            "app": {
+              "(auth)": ["login", "signup", "forgot-password"],
+              "(dashboard)": ["campaigns", "agents", "video", "leads", "analytics", "settings"],
+              "api": ["agents", "video", "skills", "webhooks"]
+            },
+            "components": {
+              "ui": "shadcn components",
+              "agents": "Agent UI components",
+              "video": "Video studio components",
+              "campaigns": "Campaign builder components",
+              "shared": "Common components"
+            },
+            "lib": ["supabase", "agents", "utils"],
+            "hooks": "Custom React hooks",
+            "contexts": "React contexts",
+            "styles": "Global styles"
+          }
+        },
+        "video-studio": {
+          "src": {
+            "compositions": ["TikTokAd.tsx", "InstagramReel.tsx", "YouTubeShort.tsx", "templates"],
+            "components": ["text", "captions", "transitions", "effects"]
+          },
+          "public": "Static assets for videos"
+        }
+      },
+      "packages": {
+        "agent-core": {
+          "src": {
+            "crews": ["ContentCrew.py", "VideoCrew.py", "LeadGenCrew.py", "CampaignCrew.py", "AnalyticsCrew.py"],
+            "agents": ["strategist.py", "copywriter.py", "video_producer.py", "lead_qualifier.py", "analytics_expert.py"],
+            "tools": ["skill_executor.py", "video_generator.py", "content_writer.py", "api_integrations.py"],
+            "flows": ["campaign_flow.py", "video_production_flow.py", "lead_nurture_flow.py"]
+          }
+        },
+        "skill-adapter": {
+          "src": ["loader.ts", "executor.ts", "registry.ts", "types.ts"]
+        },
+        "database": {
+          "migrations": "SQL migrations",
+          "seed": "Seed data",
+          "types.ts": "Generated types"
+        },
+        "shared": {
+          "src": ["types", "constants", "utils"]
+        }
+      },
+      "skills": {
+        "marketing": "Curated marketing skills from Skills.sh"
+      },
+      "docs": ["API.md", "AGENTS.md", "SKILLS.md", "ARCHITECTURE.md"],
+      "infrastructure": ["docker", "terraform"]
+    }
+  },
+
+  "skills_to_integrate": {
+    "source_path": "C:\\Users\\18504\\Desktop\\Skills.sh",
+    "tier_1_core_strategy": [
+      {
+        "name": "marketing-strategy-pmm",
+        "lines": 1163,
+        "purpose": "April Dunford positioning methodology, ICP definition, GTM strategy"
+      },
+      {
+        "name": "marketing-psychology",
+        "lines": 451,
+        "purpose": "70+ mental models for persuasion and behavioral economics"
+      },
+      {
+        "name": "executing-marketing-campaigns",
+        "lines": 120,
+        "purpose": "Campaign development workflow, multi-channel coordination"
+      }
+    ],
+    "tier_2_content_creation": [
+      {
+        "name": "ad-copy-writer",
+        "lines": 99,
+        "purpose": "Platform-specific copy for Facebook, Google, LinkedIn, TikTok"
+      },
+      {
+        "name": "content-creator",
+        "lines": 249,
+        "purpose": "SEO-optimized content, brand voice analysis"
+      },
+      {
+        "name": "tiktok-creator",
+        "lines": 128,
+        "purpose": "TikTok algorithm optimization, viral hooks"
+      },
+      {
+        "name": "marketing-ideas",
+        "lines": 565,
+        "purpose": "140 proven marketing tactics"
+      }
+    ],
+    "tier_3_video": [
+      {
+        "name": "kinetic-video-creator",
+        "lines": 348,
+        "purpose": "Remotion-based animated text videos"
+      },
+      {
+        "name": "video-producer",
+        "lines": 603,
+        "purpose": "Video playback, streaming, HLS/DASH"
+      }
+    ],
+    "tier_4_sales": [
+      {
+        "name": "lead-qualifier",
+        "purpose": "BANT/MEDDIC lead scoring frameworks"
+      },
+      {
+        "name": "sales-pipeline-manager",
+        "purpose": "Deal tracking, forecasting, pipeline health"
+      },
+      {
+        "name": "affiliate-marketing-manager",
+        "lines": 128,
+        "purpose": "Affiliate program setup and management"
+      }
+    ]
+  },
+
+  "agent_crews": {
+    "content_crew": {
+      "purpose": "Generate scroll-stopping content with psychology",
+      "skills_loaded": ["marketing-psychology", "ad-copy-writer", "hook-development"],
+      "agents": [
+        {
+          "role": "Hook Specialist",
+          "goal": "Create scroll-stopping hooks that capture attention in 0.5 seconds",
+          "key_knowledge": "Pattern interrupts, curiosity gaps, loss aversion, dopamine triggers"
+        },
+        {
+          "role": "Psychology Copywriter",
+          "goal": "Write copy that converts using 70+ mental models",
+          "key_knowledge": "Jobs to Be Done, Loss Aversion, Social Proof, Scarcity, Anchoring"
+        },
+        {
+          "role": "Platform Expert",
+          "goal": "Optimize content for each platform's algorithm",
+          "key_knowledge": "TikTok raw/authentic, Instagram aesthetic, YouTube SEO, LinkedIn professional"
+        }
+      ]
+    },
+    "video_crew": {
+      "purpose": "Generate AI-powered Remotion video code",
+      "skills_loaded": ["remotion", "kinetic-video-creator", "marketing-psychology"],
+      "agents": [
+        {
+          "role": "Video Strategy Director",
+          "goal": "Design retention-optimized video structure",
+          "key_knowledge": "65%+ retention at 3s = 4-7x impressions, 85% watch muted"
+        },
+        {
+          "role": "Remotion Code Generator",
+          "goal": "Generate production-ready Remotion React code",
+          "key_knowledge": "useCurrentFrame(), interpolate(), spring(), <Sequence>, staticFile()"
+        },
+        {
+          "role": "Caption Animator",
+          "goal": "Create TikTok-style word-by-word highlighting",
+          "key_knowledge": "Word timing sync, entrance animations, mobile-readable fonts (48px+)"
+        }
+      ]
+    },
+    "leadgen_crew": {
+      "purpose": "Qualify leads and manage pipeline",
+      "skills_loaded": ["lead-qualifier", "sales-pipeline-manager", "marketing-strategy-pmm"],
+      "agents": [
+        {
+          "role": "Lead Qualifier",
+          "goal": "Score leads using BANT and MEDDIC frameworks",
+          "key_knowledge": "Budget, Authority, Need, Timeline + Metrics, Economic Buyer, Decision Criteria"
+        },
+        {
+          "role": "Pipeline Analyst",
+          "goal": "Track deals, forecast revenue, optimize conversion",
+          "key_knowledge": "Pipeline coverage 3-4x quota, sales velocity, conversion rates by stage"
+        },
+        {
+          "role": "ICP Matcher",
+          "goal": "Match leads against Ideal Customer Profile",
+          "key_knowledge": "Firmographics, technographics, psychographics, A/B/C/D scoring"
+        }
+      ]
+    },
+    "campaign_crew": {
+      "purpose": "Full campaign orchestration from discovery to optimization",
+      "skills_loaded": ["marketing-strategy-pmm", "executing-marketing-campaigns"],
+      "agents": [
+        {
+          "role": "Brand Strategist",
+          "goal": "Extract brand DNA using April Dunford positioning",
+          "key_knowledge": "Competitive alternatives, unique attributes, value propositions, best-fit customers"
+        },
+        {
+          "role": "Campaign Planner",
+          "goal": "Orchestrate multi-channel campaigns",
+          "key_knowledge": "GTM strategy, launch playbooks Tier 1/2/3, international market entry"
+        },
+        {
+          "role": "Analytics Expert",
+          "goal": "Optimize campaigns based on performance data",
+          "key_knowledge": "Win/loss analysis, A/B testing, conversion optimization"
+        }
+      ]
+    }
+  },
+
+  "database_schema": {
+    "tables": {
+      "organizations": {
+        "columns": ["id UUID PK", "name TEXT", "slug TEXT UNIQUE", "plan TEXT", "settings JSONB", "created_at", "updated_at"],
+        "plan_options": ["free", "starter", "pro", "enterprise"]
+      },
+      "users": {
+        "columns": ["id UUID PK (refs auth.users)", "email TEXT UNIQUE", "full_name TEXT", "avatar_url TEXT", "organization_id UUID FK", "role TEXT", "preferences JSONB", "created_at", "updated_at"],
+        "role_options": ["owner", "admin", "member", "viewer"]
+      },
+      "brands": {
+        "columns": ["id UUID PK", "organization_id UUID FK", "name TEXT", "description TEXT", "problem_solved TEXT", "unfair_advantage TEXT", "target_demographics JSONB", "target_psychographics JSONB", "pain_points TEXT[]", "personality_traits TEXT[]", "tone_of_voice TEXT", "primary_color TEXT", "secondary_color TEXT", "accent_color TEXT", "fonts JSONB", "logo_url TEXT", "competitive_alternatives TEXT[]", "unique_attributes JSONB", "value_propositions JSONB", "best_fit_customers TEXT", "market_category TEXT", "icp_criteria JSONB", "created_at", "updated_at"]
+      },
+      "campaigns": {
+        "columns": ["id UUID PK", "brand_id UUID FK", "organization_id UUID FK", "name TEXT", "description TEXT", "status TEXT", "objective TEXT", "target_platforms TEXT[]", "start_date DATE", "end_date DATE", "budget DECIMAL", "primary_trigger TEXT", "hook_formula TEXT", "emotional_journey JSONB", "mental_models_used TEXT[]", "scripts JSONB", "hooks JSONB", "metrics JSONB", "created_at", "updated_at"],
+        "status_options": ["draft", "planning", "active", "paused", "completed"],
+        "objective_options": ["awareness", "traffic", "conversions", "leads", "app_install"]
+      },
+      "generated_videos": {
+        "columns": ["id UUID PK", "campaign_id UUID FK", "organization_id UUID FK", "name TEXT", "platform TEXT", "width INT", "height INT", "duration_seconds DECIMAL", "fps INT", "remotion_code TEXT", "script TEXT", "word_timings JSONB", "video_url TEXT", "thumbnail_url TEXT", "status TEXT", "generation_metadata JSONB", "created_at", "updated_at"],
+        "platform_options": ["tiktok", "instagram_reels", "youtube_shorts", "youtube", "linkedin"],
+        "status_options": ["pending", "processing", "completed", "failed"]
+      },
+      "agent_crews": {
+        "columns": ["id UUID PK", "organization_id UUID FK", "crew_type TEXT", "name TEXT", "agents JSONB", "skills_loaded TEXT[]", "config JSONB", "status TEXT", "current_task TEXT", "created_at", "updated_at"],
+        "crew_type_options": ["content", "video", "leadgen", "campaign", "analytics"],
+        "status_options": ["idle", "running", "paused", "completed", "error"]
+      },
+      "agent_sessions": {
+        "columns": ["id UUID PK", "crew_id UUID FK", "user_id UUID FK", "messages JSONB", "context JSONB", "generated_outputs JSONB", "tokens_used INT", "created_at", "updated_at"]
+      },
+      "leads": {
+        "columns": ["id UUID PK", "organization_id UUID FK", "campaign_id UUID FK", "email TEXT", "phone TEXT", "first_name TEXT", "last_name TEXT", "company_name TEXT", "company_size TEXT", "industry TEXT", "job_title TEXT", "bant_score JSONB", "meddic_score JSONB", "icp_fit TEXT", "lead_score INT", "stage TEXT", "deal_value DECIMAL", "probability INT", "expected_close_date DATE", "source TEXT", "utm_params JSONB", "last_activity_at TIMESTAMPTZ", "activities JSONB", "created_at", "updated_at"],
+        "icp_fit_options": ["A", "B", "C", "D"],
+        "stage_options": ["new", "qualified", "proposal", "negotiation", "won", "lost"]
+      },
+      "skills_registry": {
+        "columns": ["id UUID PK", "name TEXT UNIQUE", "slug TEXT UNIQUE", "description TEXT", "category TEXT", "version TEXT", "skill_content TEXT", "references JSONB", "usage_count INT", "last_used_at TIMESTAMPTZ", "local_path TEXT", "created_at", "updated_at"]
+      },
+      "usage_records": {
+        "columns": ["id UUID PK", "organization_id UUID FK", "usage_type TEXT", "quantity INT", "unit_cost DECIMAL", "metadata JSONB", "created_at"],
+        "usage_type_options": ["agent_tokens", "video_render", "skill_execution", "api_call"]
+      }
+    },
+    "rls_policies": "Enable Row Level Security on all tables with organization-based isolation"
+  },
+
+  "video_specs": {
+    "tiktok": {"width": 1080, "height": 1920, "fps": 30, "max_duration": 180, "aspect": "9:16"},
+    "instagram_reels": {"width": 1080, "height": 1920, "fps": 30, "max_duration": 90, "aspect": "9:16"},
+    "youtube_shorts": {"width": 1080, "height": 1920, "fps": 30, "max_duration": 60, "aspect": "9:16"},
+    "youtube": {"width": 1920, "height": 1080, "fps": 30, "max_duration": null, "aspect": "16:9"},
+    "instagram_feed": {"width": 1080, "height": 1080, "fps": 30, "max_duration": 60, "aspect": "1:1"}
+  },
+
+  "remotion_rules": {
+    "always_use": [
+      "useCurrentFrame() for ALL motion",
+      "interpolate() for value mapping",
+      "spring() for natural movement",
+      "<Sequence> for timing sections",
+      "staticFile() for assets in public/"
+    ],
+    "never_use": [
+      "CSS animations/transitions",
+      "requestAnimationFrame",
+      "setTimeout/setInterval for timing",
+      "Direct Three.js useFrame()"
+    ]
+  },
+
+  "pricing_tiers": {
+    "free": {
+      "price": 0,
+      "videos_per_month": 3,
+      "agent_sessions_per_month": 10,
+      "leads_stored": 100,
+      "brands_allowed": 1,
+      "campaigns_per_month": 2,
+      "team_members": 1,
+      "features": ["Basic video generation", "Single agent crew", "Community support"]
+    },
+    "starter": {
+      "price": 49,
+      "videos_per_month": 25,
+      "agent_sessions_per_month": 100,
+      "leads_stored": 1000,
+      "brands_allowed": 3,
+      "campaigns_per_month": 10,
+      "team_members": 3,
+      "features": ["All Free features", "All agent crews", "TikTok + Instagram export", "Basic analytics", "Email support"]
+    },
+    "pro": {
+      "price": 149,
+      "videos_per_month": 100,
+      "agent_sessions_per_month": 500,
+      "leads_stored": 10000,
+      "brands_allowed": 10,
+      "campaigns_per_month": 50,
+      "team_members": 10,
+      "features": ["All Starter features", "Avatar video generation", "Advanced analytics", "Lead qualification AI", "Pipeline management", "API access", "Priority support"]
+    },
+    "enterprise": {
+      "price": "custom",
+      "videos_per_month": "unlimited",
+      "agent_sessions_per_month": "unlimited",
+      "leads_stored": "unlimited",
+      "brands_allowed": "unlimited",
+      "campaigns_per_month": "unlimited",
+      "team_members": "unlimited",
+      "features": ["All Pro features", "Custom agent training", "White-label option", "Dedicated success manager", "SLA guarantee", "Custom integrations", "SSO/SAML"]
+    }
+  },
+
+  "usage_pricing": {
+    "video_render": {"unit": "video", "price": 2.00},
+    "agent_tokens": {"unit": "1K tokens", "price": 0.01},
+    "lead_enrichment": {"unit": "lead", "price": 0.10},
+    "avatar_video": {"unit": "minute", "price": 5.00}
+  },
+
+  "legal_compliance": {
+    "content_compliance": {
+      "ftc_disclosures": ["#ad", "#sponsored", "Paid partnership"],
+      "prohibited_claims": ["guaranteed results", "get rich quick", "miracle cure", "no risk"],
+      "platform_policies": ["TikTok community guidelines", "Instagram branded content", "YouTube kids COPPA"]
+    },
+    "data_privacy": {
+      "gdpr": ["Right to erasure", "Data portability", "Consent management", "Data retention policies"],
+      "ccpa": ["California privacy compliance", "Do not sell my info"],
+      "general": ["Anonymize aggregated data", "Log data deletions"]
+    }
+  },
+
+  "api_endpoints": {
+    "agents": [
+      "POST /api/agents/content-crew - Run content generation crew",
+      "POST /api/agents/video-crew - Run video generation crew",
+      "POST /api/agents/leadgen-crew - Run lead qualification crew",
+      "POST /api/agents/campaign-crew - Run full campaign crew",
+      "GET /api/agents/sessions/:id - Get agent session history"
+    ],
+    "video": [
+      "POST /api/video/generate - Generate Remotion video",
+      "GET /api/video/:id/status - Check render status",
+      "GET /api/video/:id/download - Download rendered video"
+    ],
+    "skills": [
+      "GET /api/skills - List available skills",
+      "POST /api/skills/execute - Execute a skill with context"
+    ],
+    "campaigns": [
+      "POST /api/campaigns - Create campaign",
+      "GET /api/campaigns/:id - Get campaign details",
+      "PUT /api/campaigns/:id - Update campaign",
+      "POST /api/campaigns/:id/launch - Launch campaign"
+    ],
+    "leads": [
+      "POST /api/leads - Create lead",
+      "POST /api/leads/import - Bulk import leads",
+      "POST /api/leads/:id/qualify - Run AI qualification",
+      "GET /api/leads/pipeline - Get pipeline view"
+    ]
+  },
+
+  "external_repos_to_clone": [
+    {
+      "name": "CrewAI",
+      "url": "https://github.com/crewAIInc/crewAI",
+      "purpose": "Multi-agent orchestration framework"
+    },
+    {
+      "name": "CUA",
+      "url": "https://github.com/trycua/cua",
+      "purpose": "Bounded computer use agent for real actions"
+    },
+    {
+      "name": "Kimi-K2.5",
+      "url": "https://github.com/MoonshotAI/Kimi-K2.5",
+      "purpose": "Multimodal LLM for vision tasks"
+    },
+    {
+      "name": "Remotion",
+      "url": "https://github.com/remotion-dev/remotion",
+      "purpose": "Programmatic video generation"
+    }
+  ],
+
+  "critical_files_to_reference": {
+    "existing_ui_components": "C:\\Users\\18504\\videoclaude\\dollar4hire-ui-glass\\src\\components\\ui\\",
+    "marketing_strategy_skill": "C:\\Users\\18504\\Desktop\\Skills.sh\\marketing-strategy-pmm\\SKILL.md",
+    "psychology_models_skill": "C:\\Users\\18504\\Desktop\\Skills.sh\\marketing-psychology\\SKILL.md",
+    "remotion_patterns_skill": "C:\\Users\\18504\\Desktop\\Skills.sh\\kinetic-video-creator\\SKILL.md",
+    "ad_copy_templates_skill": "C:\\Users\\18504\\Desktop\\Skills.sh\\ad-copy-writer\\SKILL.md",
+    "existing_remotion_skeleton": "C:\\Users\\18504\\videoclaude\\claude-pedia-ad\\src\\Root.tsx"
+  },
+
+  "implementation_phases": [
+    {
+      "phase": 1,
+      "name": "Project Setup",
+      "duration": "Week 1",
+      "tasks": [
+        "Create folder structure at D:\\MARKET_AI",
+        "Initialize GitHub repo MARKETER_AI",
+        "Set up Turborepo monorepo",
+        "Configure Next.js 14 with App Router",
+        "Copy shadcn components from dollar4hire-ui-glass",
+        "Set up Supabase project"
+      ]
+    },
+    {
+      "phase": 2,
+      "name": "Skills Integration",
+      "duration": "Week 2",
+      "tasks": [
+        "Copy curated skills to local cache",
+        "Implement SkillExecutor class",
+        "Create skill loader and registry",
+        "Test skill execution with Claude API"
+      ]
+    },
+    {
+      "phase": 3,
+      "name": "Agent Core Engine",
+      "duration": "Weeks 3-4",
+      "tasks": [
+        "Set up CrewAI Python package",
+        "Create Content Crew with 3 agents",
+        "Create Video Crew with 3 agents",
+        "Create LeadGen Crew with 3 agents",
+        "Create Campaign Crew with 3 agents",
+        "Implement CrewAI Flows for orchestration",
+        "Build agent chat API endpoints"
+      ]
+    },
+    {
+      "phase": 4,
+      "name": "Video Generation",
+      "duration": "Weeks 5-6",
+      "tasks": [
+        "Set up Remotion video-studio app",
+        "Create TikTokAd composition",
+        "Create InstagramReel composition",
+        "Create YouTubeShort composition",
+        "Build TikTok-style captions component",
+        "Implement video render API",
+        "Integrate Supabase Storage for videos"
+      ]
+    },
+    {
+      "phase": 5,
+      "name": "Premium UI",
+      "duration": "Week 7",
+      "tasks": [
+        "Build dashboard layout",
+        "Create Agent Workspace with chat interface",
+        "Build Video Studio with preview player",
+        "Create Campaign Builder wizard",
+        "Build Lead Management pipeline view",
+        "Implement glass morphism design system"
+      ]
+    },
+    {
+      "phase": 6,
+      "name": "Database & Auth",
+      "duration": "Week 8",
+      "tasks": [
+        "Run Supabase migrations",
+        "Implement Row Level Security",
+        "Set up authentication flow",
+        "Create organization management"
+      ]
+    },
+    {
+      "phase": 7,
+      "name": "Monetization",
+      "duration": "Week 9",
+      "tasks": [
+        "Integrate Stripe subscriptions",
+        "Implement usage-based billing",
+        "Create plan selection UI",
+        "Build usage dashboard"
+      ]
+    },
+    {
+      "phase": 8,
+      "name": "Legal & Compliance",
+      "duration": "Week 10",
+      "tasks": [
+        "Implement content compliance checker",
+        "Add FTC disclosure automation",
+        "Create GDPR data export/delete",
+        "Add consent management"
+      ]
+    },
+    {
+      "phase": 9,
+      "name": "Polish & Testing",
+      "duration": "Weeks 11-12",
+      "tasks": [
+        "Performance optimization",
+        "Mobile responsiveness",
+        "Error handling improvements",
+        "Unit and integration tests",
+        "E2E testing with Playwright"
+      ]
+    },
+    {
+      "phase": 10,
+      "name": "Launch",
+      "duration": "Week 12",
+      "tasks": [
+        "Deploy to Vercel",
+        "Set up monitoring (Sentry)",
+        "Create documentation",
+        "Build onboarding flows",
+        "Beta testing and bug fixes"
+      ]
+    }
+  ],
+
+  "success_criteria": [
+    "Create campaign with brand discovery in < 5 minutes",
+    "Generate 5 hook variations with psychology analysis",
+    "Render TikTok video in < 2 minutes",
+    "Score leads with BANT/MEDDIC automatically",
+    "Export videos to all 3 platforms (TikTok, Reels, Shorts)",
+    "Users can go from brief to published video in < 10 minutes"
+  ],
+
+  "key_psychology_principles": {
+    "hook_requirements": [
+      "Pattern Interrupt - Break the scroll trance",
+      "Curiosity Gap - Incomplete info creates tension",
+      "Value Promise - Signal reward for watching",
+      "Loss Aversion - Losses hurt 2x more than gains",
+      "Social Proof - Tribal validation",
+      "Scarcity/Urgency - Limited = valuable"
+    ],
+    "critical_stats": [
+      "65%+ retention at 3 seconds = 4-7x more impressions",
+      "85% watch videos muted - text/captions essential",
+      "Person speaking to camera converts 33% better",
+      "Average scroll decision: 0.5 seconds",
+      "Videos losing >35% at 3 seconds get algorithmically buried"
+    ],
+    "core_philosophy": [
+      "73% of video ads fail in the first 3 seconds because they look like ads",
+      "People don't buy products. They buy better versions of themselves",
+      "The uncertainty of reward triggers more dopamine than the reward itself",
+      "Authenticity beats production value every time. UGC-style wins"
+    ]
+  },
+
+  "generation_targeting": {
+    "gen_z": {
+      "age": "13-28",
+      "content_style": "Raw, chaotic, meme-literate",
+      "platforms": ["TikTok", "YouTube Shorts"],
+      "aesthetic": "Y2K, maximalist, ironic"
+    },
+    "millennials": {
+      "age": "29-44",
+      "content_style": "Nostalgic, aspirational",
+      "platforms": ["Instagram", "YouTube"],
+      "aesthetic": "Clean, aesthetic, warm"
+    },
+    "gen_x": {
+      "age": "45-60",
+      "content_style": "Direct, practical",
+      "platforms": ["Facebook", "YouTube"],
+      "aesthetic": "Professional, trustworthy"
+    },
+    "boomers": {
+      "age": "61+",
+      "content_style": "Clear, benefit-driven",
+      "platforms": ["Facebook", "YouTube"],
+      "aesthetic": "Classic, high-contrast"
+    }
+  }
+}
