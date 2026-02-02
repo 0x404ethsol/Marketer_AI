@@ -1,0 +1,818 @@
+{
+  "model": "gemini-3-flash",
+  "system_context": {
+    "role": "You are an elite full-stack AI developer building MARKETER_AI - the ultimate marketing automation platform. You have access to the complete codebase at https://github.com/0x404ethsol/Marketer_AI. Execute each task with precision, commit after each major milestone, and never stop until complete.",
+    "personality": "Relentless, detail-oriented, ship fast, iterate faster",
+    "code_standards": {
+      "typescript": "Strict mode, proper types, no any",
+      "python": "Type hints, docstrings, PEP 8",
+      "react": "Functional components, hooks, proper keys",
+      "commits": "Conventional commits, atomic changes"
+    }
+  },
+
+  "project_context": {
+    "repo": "https://github.com/0x404ethsol/Marketer_AI",
+    "existing_files": {
+      "handoff_spec": "MARKETER_AI_HANDOFF.json",
+      "implementation_plan": "IMPLEMENTATION_PLAN.md",
+      "architecture": "docs/ARCHITECTURE.md",
+      "database_schema": "packages/database/migrations/001_initial_schema.sql",
+      "content_crew": "packages/agent-core/src/crews/content_crew.py",
+      "video_crew": "packages/agent-core/src/crews/video_crew.py",
+      "skill_executor": "packages/skill-adapter/src/executor.ts",
+      "tiktok_composition": "apps/video-studio/src/compositions/TikTokAd.tsx"
+    },
+    "skills_source": "C:\\Users\\18504\\Desktop\\Skills.sh",
+    "tech_stack": {
+      "frontend": ["Next.js 14", "React 18", "Tailwind CSS", "shadcn/ui", "Framer Motion"],
+      "backend": ["Supabase", "CrewAI", "Python 3.10+"],
+      "video": ["Remotion 4.x"],
+      "llm": ["Claude API", "Gemini API"],
+      "payments": ["Stripe"]
+    }
+  },
+
+  "zero_to_one_checklist": {
+    "phase_0_setup": {
+      "name": "Environment & Dependencies",
+      "priority": "CRITICAL",
+      "tasks": [
+        {
+          "id": "0.1",
+          "task": "Clone repo and verify existing files",
+          "command": "git clone https://github.com/0x404ethsol/Marketer_AI.git && cd Marketer_AI && ls -la",
+          "success_criteria": "All 18 committed files present",
+          "status": "pending"
+        },
+        {
+          "id": "0.2",
+          "task": "Install pnpm and Node.js dependencies",
+          "command": "npm install -g pnpm && pnpm install",
+          "success_criteria": "node_modules created, no errors",
+          "status": "pending"
+        },
+        {
+          "id": "0.3",
+          "task": "Set up Python virtual environment for agent-core",
+          "command": "cd packages/agent-core && python -m venv venv && source venv/bin/activate && pip install -e .",
+          "success_criteria": "CrewAI and dependencies installed",
+          "status": "pending"
+        },
+        {
+          "id": "0.4",
+          "task": "Create .env.local from .env.example",
+          "command": "cp .env.example .env.local",
+          "success_criteria": ".env.local exists with placeholder values",
+          "status": "pending"
+        },
+        {
+          "id": "0.5",
+          "task": "Set up Supabase project",
+          "actions": [
+            "Create new Supabase project at supabase.com",
+            "Copy project URL and anon key to .env.local",
+            "Run migrations: packages/database/migrations/001_initial_schema.sql"
+          ],
+          "success_criteria": "All 10 tables created with RLS policies",
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_1_nextjs_foundation": {
+      "name": "Next.js App Foundation",
+      "priority": "HIGH",
+      "tasks": [
+        {
+          "id": "1.1",
+          "task": "Initialize Next.js 14 app with App Router",
+          "location": "apps/web/",
+          "files_to_create": [
+            "next.config.js",
+            "tailwind.config.ts",
+            "postcss.config.js",
+            "tsconfig.json",
+            "src/app/layout.tsx",
+            "src/app/page.tsx",
+            "src/app/globals.css"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "1.2",
+          "task": "Set up Supabase client",
+          "location": "apps/web/src/lib/supabase/",
+          "files_to_create": [
+            "client.ts - Browser client",
+            "server.ts - Server client",
+            "middleware.ts - Auth middleware"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "1.3",
+          "task": "Install and configure shadcn/ui",
+          "command": "cd apps/web && npx shadcn-ui@latest init",
+          "components_to_add": [
+            "button", "card", "dialog", "dropdown-menu", "input",
+            "label", "select", "tabs", "toast", "tooltip", "avatar",
+            "badge", "progress", "skeleton", "sheet", "separator"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "1.4",
+          "task": "Create auth pages",
+          "location": "apps/web/src/app/(auth)/",
+          "files_to_create": [
+            "login/page.tsx",
+            "signup/page.tsx",
+            "forgot-password/page.tsx",
+            "layout.tsx"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "1.5",
+          "task": "Create dashboard layout",
+          "location": "apps/web/src/app/(dashboard)/",
+          "files_to_create": [
+            "layout.tsx - Sidebar + header layout",
+            "page.tsx - Dashboard home",
+            "loading.tsx - Loading skeleton"
+          ],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_2_ui_components": {
+      "name": "Premium UI Components",
+      "priority": "HIGH",
+      "tasks": [
+        {
+          "id": "2.1",
+          "task": "Create glass morphism components",
+          "location": "apps/web/src/components/ui/",
+          "files_to_create": [
+            "glass-card.tsx - Frosted glass card",
+            "glass-button.tsx - Glass button variant",
+            "glass-input.tsx - Glass input field"
+          ],
+          "styling": "backdrop-blur-xl bg-white/10 border border-white/20",
+          "status": "pending"
+        },
+        {
+          "id": "2.2",
+          "task": "Create sidebar navigation",
+          "location": "apps/web/src/components/shared/",
+          "files_to_create": [
+            "sidebar.tsx",
+            "sidebar-item.tsx",
+            "sidebar-logo.tsx"
+          ],
+          "nav_items": [
+            "Dashboard", "Campaigns", "Agents", "Video Studio",
+            "Leads", "Analytics", "Settings"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "2.3",
+          "task": "Create stat cards for dashboard",
+          "location": "apps/web/src/components/dashboard/",
+          "files_to_create": [
+            "stat-card.tsx - Animated number with trend",
+            "campaign-card.tsx - Campaign summary",
+            "recent-activity.tsx - Activity feed"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "2.4",
+          "task": "Create agent workspace components",
+          "location": "apps/web/src/components/agents/",
+          "files_to_create": [
+            "agent-chat.tsx - Chat interface with streaming",
+            "agent-progress.tsx - Task progress visualization",
+            "crew-visualizer.tsx - Agent relationship diagram",
+            "agent-output.tsx - Generated content display"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "2.5",
+          "task": "Create video studio components",
+          "location": "apps/web/src/components/video/",
+          "files_to_create": [
+            "video-preview.tsx - Remotion Player wrapper",
+            "video-controls.tsx - Play/pause/seek",
+            "video-export.tsx - Export options",
+            "platform-selector.tsx - TikTok/IG/YT selector"
+          ],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_3_api_routes": {
+      "name": "API Routes & Server Actions",
+      "priority": "HIGH",
+      "tasks": [
+        {
+          "id": "3.1",
+          "task": "Create agent API routes",
+          "location": "apps/web/src/app/api/agents/",
+          "files_to_create": [
+            "route.ts - List crews",
+            "[crewId]/route.ts - Get crew details",
+            "[crewId]/run/route.ts - Execute crew",
+            "[crewId]/sessions/route.ts - Get sessions"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "3.2",
+          "task": "Create video API routes",
+          "location": "apps/web/src/app/api/video/",
+          "files_to_create": [
+            "generate/route.ts - Start video generation",
+            "[videoId]/status/route.ts - Check render status",
+            "[videoId]/download/route.ts - Get download URL"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "3.3",
+          "task": "Create skills API routes",
+          "location": "apps/web/src/app/api/skills/",
+          "files_to_create": [
+            "route.ts - List available skills",
+            "execute/route.ts - Execute skill with context"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "3.4",
+          "task": "Create campaign server actions",
+          "location": "apps/web/src/app/(dashboard)/campaigns/",
+          "files_to_create": [
+            "actions.ts - createCampaign, updateCampaign, deleteCampaign"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "3.5",
+          "task": "Create lead server actions",
+          "location": "apps/web/src/app/(dashboard)/leads/",
+          "files_to_create": [
+            "actions.ts - createLead, qualifyLead, updateStage"
+          ],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_4_agent_integration": {
+      "name": "CrewAI Agent Integration",
+      "priority": "HIGH",
+      "tasks": [
+        {
+          "id": "4.1",
+          "task": "Create Lead Gen Crew",
+          "location": "packages/agent-core/src/crews/",
+          "file": "leadgen_crew.py",
+          "agents": [
+            "Lead Qualifier - BANT/MEDDIC scoring",
+            "Pipeline Analyst - Forecasting",
+            "ICP Matcher - Customer profiling"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "4.2",
+          "task": "Create Campaign Crew",
+          "location": "packages/agent-core/src/crews/",
+          "file": "campaign_crew.py",
+          "agents": [
+            "Brand Strategist - April Dunford positioning",
+            "Campaign Planner - Multi-channel orchestration",
+            "Analytics Expert - Performance optimization"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "4.3",
+          "task": "Create agent tools",
+          "location": "packages/agent-core/src/tools/",
+          "files_to_create": [
+            "skill_tool.py - Execute Skills.sh skills",
+            "supabase_tool.py - Database operations",
+            "video_tool.py - Trigger video generation",
+            "analytics_tool.py - Fetch metrics"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "4.4",
+          "task": "Create campaign flow",
+          "location": "packages/agent-core/src/flows/",
+          "file": "campaign_flow.py",
+          "flow": "Discovery → Strategy → Content → Video → Launch → Optimize",
+          "status": "pending"
+        },
+        {
+          "id": "4.5",
+          "task": "Create Python API server",
+          "location": "packages/agent-core/",
+          "files_to_create": [
+            "server.py - FastAPI server",
+            "routes/agents.py - Agent endpoints",
+            "routes/skills.py - Skill endpoints"
+          ],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_5_video_generation": {
+      "name": "Video Generation Pipeline",
+      "priority": "MEDIUM",
+      "tasks": [
+        {
+          "id": "5.1",
+          "task": "Create Instagram Reel composition",
+          "location": "apps/video-studio/src/compositions/",
+          "file": "InstagramReel.tsx",
+          "specs": {"width": 1080, "height": 1920, "fps": 30, "maxDuration": 90},
+          "status": "pending"
+        },
+        {
+          "id": "5.2",
+          "task": "Create YouTube Short composition",
+          "location": "apps/video-studio/src/compositions/",
+          "file": "YouTubeShort.tsx",
+          "specs": {"width": 1080, "height": 1920, "fps": 30, "maxDuration": 60},
+          "status": "pending"
+        },
+        {
+          "id": "5.3",
+          "task": "Create shared video components",
+          "location": "apps/video-studio/src/components/",
+          "files_to_create": [
+            "text/AnimatedText.tsx - Kinetic typography",
+            "captions/TikTokCaptions.tsx - Word highlighting",
+            "transitions/FadeTransition.tsx",
+            "transitions/SlideTransition.tsx",
+            "effects/GlitchEffect.tsx",
+            "effects/ParticleEffect.tsx"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "5.4",
+          "task": "Create video render API",
+          "location": "apps/video-studio/",
+          "files_to_create": [
+            "render.ts - Remotion render function",
+            "queue.ts - Render queue management"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "5.5",
+          "task": "Create Remotion Root with all compositions",
+          "location": "apps/video-studio/src/",
+          "file": "Root.tsx",
+          "compositions": ["TikTokAd", "InstagramReel", "YouTubeShort"],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_6_dashboard_pages": {
+      "name": "Dashboard Pages",
+      "priority": "MEDIUM",
+      "tasks": [
+        {
+          "id": "6.1",
+          "task": "Create campaigns page",
+          "location": "apps/web/src/app/(dashboard)/campaigns/",
+          "files_to_create": [
+            "page.tsx - Campaign list",
+            "new/page.tsx - Create campaign wizard",
+            "[id]/page.tsx - Campaign details",
+            "[id]/edit/page.tsx - Edit campaign"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "6.2",
+          "task": "Create agents page",
+          "location": "apps/web/src/app/(dashboard)/agents/",
+          "files_to_create": [
+            "page.tsx - Crew selection",
+            "[crewType]/page.tsx - Agent workspace"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "6.3",
+          "task": "Create video studio page",
+          "location": "apps/web/src/app/(dashboard)/video/",
+          "files_to_create": [
+            "page.tsx - Video list",
+            "new/page.tsx - Create video",
+            "[id]/page.tsx - Video editor"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "6.4",
+          "task": "Create leads page",
+          "location": "apps/web/src/app/(dashboard)/leads/",
+          "files_to_create": [
+            "page.tsx - Lead list with pipeline view",
+            "[id]/page.tsx - Lead details",
+            "import/page.tsx - Bulk import"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "6.5",
+          "task": "Create analytics page",
+          "location": "apps/web/src/app/(dashboard)/analytics/",
+          "files_to_create": [
+            "page.tsx - Analytics dashboard",
+            "campaigns/page.tsx - Campaign analytics",
+            "leads/page.tsx - Lead analytics"
+          ],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_7_skills_integration": {
+      "name": "Skills.sh Deep Integration",
+      "priority": "MEDIUM",
+      "tasks": [
+        {
+          "id": "7.1",
+          "task": "Copy core marketing skills to repo",
+          "source": "C:\\Users\\18504\\Desktop\\Skills.sh",
+          "destination": "skills/marketing/",
+          "skills_to_copy": [
+            "marketing-strategy-pmm",
+            "marketing-psychology",
+            "ad-copy-writer",
+            "content-creator",
+            "tiktok-creator",
+            "kinetic-video-creator",
+            "lead-qualifier",
+            "sales-pipeline-manager",
+            "executing-marketing-campaigns",
+            "marketing-ideas"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "7.2",
+          "task": "Create skill registry seeder",
+          "location": "packages/database/seed/",
+          "file": "skills.ts",
+          "purpose": "Populate skills_registry table from skill files",
+          "status": "pending"
+        },
+        {
+          "id": "7.3",
+          "task": "Create skill selection UI",
+          "location": "apps/web/src/components/agents/",
+          "file": "skill-selector.tsx",
+          "features": ["Search", "Categories", "Preview", "Multi-select"],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_8_payments": {
+      "name": "Stripe Integration",
+      "priority": "MEDIUM",
+      "tasks": [
+        {
+          "id": "8.1",
+          "task": "Set up Stripe products and prices",
+          "products": [
+            {"name": "Free", "price": 0},
+            {"name": "Starter", "price": 4900, "interval": "month"},
+            {"name": "Pro", "price": 14900, "interval": "month"},
+            {"name": "Enterprise", "price": "custom"}
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "8.2",
+          "task": "Create billing API routes",
+          "location": "apps/web/src/app/api/billing/",
+          "files_to_create": [
+            "checkout/route.ts - Create checkout session",
+            "portal/route.ts - Customer portal",
+            "webhook/route.ts - Handle Stripe webhooks"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "8.3",
+          "task": "Create pricing page",
+          "location": "apps/web/src/app/",
+          "file": "pricing/page.tsx",
+          "features": ["Plan comparison", "Feature matrix", "CTA buttons"],
+          "status": "pending"
+        },
+        {
+          "id": "8.4",
+          "task": "Create usage tracking",
+          "location": "apps/web/src/lib/",
+          "file": "usage.ts",
+          "track": ["agent_tokens", "video_render", "skill_execution"],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_9_polish": {
+      "name": "Polish & Optimization",
+      "priority": "LOW",
+      "tasks": [
+        {
+          "id": "9.1",
+          "task": "Add loading states and skeletons",
+          "locations": ["All pages", "All async components"],
+          "status": "pending"
+        },
+        {
+          "id": "9.2",
+          "task": "Add error boundaries",
+          "location": "apps/web/src/components/",
+          "file": "error-boundary.tsx",
+          "status": "pending"
+        },
+        {
+          "id": "9.3",
+          "task": "Add toast notifications",
+          "use": "shadcn/ui toast",
+          "triggers": ["Success", "Error", "Info", "Warning"],
+          "status": "pending"
+        },
+        {
+          "id": "9.4",
+          "task": "Add keyboard shortcuts",
+          "shortcuts": {
+            "Cmd+K": "Command palette",
+            "Cmd+N": "New campaign",
+            "Cmd+S": "Save",
+            "Escape": "Close modal"
+          },
+          "status": "pending"
+        },
+        {
+          "id": "9.5",
+          "task": "Optimize bundle size",
+          "actions": [
+            "Analyze with @next/bundle-analyzer",
+            "Lazy load heavy components",
+            "Use dynamic imports for Remotion"
+          ],
+          "status": "pending"
+        }
+      ]
+    },
+
+    "phase_10_deploy": {
+      "name": "Deployment",
+      "priority": "LOW",
+      "tasks": [
+        {
+          "id": "10.1",
+          "task": "Set up Vercel project",
+          "actions": [
+            "Connect GitHub repo",
+            "Configure environment variables",
+            "Set up preview deployments"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "10.2",
+          "task": "Configure Supabase production",
+          "actions": [
+            "Enable production mode",
+            "Set up connection pooling",
+            "Configure backups"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "10.3",
+          "task": "Set up monitoring",
+          "tools": ["Sentry for errors", "Vercel Analytics", "Supabase logs"],
+          "status": "pending"
+        },
+        {
+          "id": "10.4",
+          "task": "Create production checklist",
+          "items": [
+            "All env vars set",
+            "Database migrations run",
+            "Stripe webhooks configured",
+            "Domain configured",
+            "SSL enabled"
+          ],
+          "status": "pending"
+        },
+        {
+          "id": "10.5",
+          "task": "Launch!",
+          "actions": [
+            "Merge to main",
+            "Verify deployment",
+            "Test all features",
+            "Announce launch"
+          ],
+          "status": "pending"
+        }
+      ]
+    }
+  },
+
+  "skills_required": {
+    "frontend": {
+      "core": [
+        "React 18 (hooks, context, suspense)",
+        "Next.js 14 (App Router, Server Components, Server Actions)",
+        "TypeScript (strict mode, generics, utility types)",
+        "Tailwind CSS (responsive, custom config, animations)",
+        "Framer Motion (gestures, layout animations, variants)"
+      ],
+      "libraries": [
+        "shadcn/ui (components, theming)",
+        "Radix UI (primitives, accessibility)",
+        "TanStack React Query (caching, mutations, optimistic updates)",
+        "Lucide React (icons)",
+        "React Hook Form + Zod (validation)"
+      ],
+      "patterns": [
+        "Component composition",
+        "Render props and compound components",
+        "Custom hooks for business logic",
+        "Error boundaries",
+        "Suspense boundaries"
+      ]
+    },
+    "backend": {
+      "core": [
+        "Node.js (ES modules, async/await)",
+        "Python 3.10+ (type hints, async)",
+        "SQL (complex queries, CTEs, window functions)",
+        "REST API design",
+        "WebSocket (real-time updates)"
+      ],
+      "frameworks": [
+        "Next.js API Routes",
+        "FastAPI (Python)",
+        "Supabase SDK (auth, database, storage, realtime)"
+      ],
+      "patterns": [
+        "Repository pattern",
+        "Service layer",
+        "Middleware",
+        "Rate limiting",
+        "Caching strategies"
+      ]
+    },
+    "ai_ml": {
+      "core": [
+        "CrewAI (agents, crews, tasks, flows)",
+        "LLM prompting (system prompts, few-shot, chain-of-thought)",
+        "Claude API (messages, streaming, tool use)",
+        "Gemini API (multimodal, function calling)"
+      ],
+      "concepts": [
+        "Multi-agent orchestration",
+        "Tool/function calling",
+        "RAG (retrieval augmented generation)",
+        "Prompt engineering",
+        "Token optimization"
+      ]
+    },
+    "video": {
+      "core": [
+        "Remotion (compositions, sequences, springs)",
+        "React for video (frame-based thinking)",
+        "FFmpeg (rendering, encoding)",
+        "Video formats (MP4, WebM, codecs)"
+      ],
+      "animation": [
+        "Easing functions",
+        "Spring physics",
+        "Keyframe interpolation",
+        "Timing and pacing"
+      ]
+    },
+    "devops": {
+      "core": [
+        "Git (branching, rebasing, conventional commits)",
+        "GitHub Actions (CI/CD)",
+        "Vercel (deployment, edge functions)",
+        "Docker (containerization)"
+      ],
+      "monitoring": [
+        "Sentry (error tracking)",
+        "Analytics (Vercel, Supabase)",
+        "Logging (structured logs)"
+      ]
+    },
+    "domain_knowledge": {
+      "marketing": [
+        "Psychology triggers (scarcity, social proof, loss aversion)",
+        "Hook formulas (pattern interrupt, curiosity gap)",
+        "Platform algorithms (TikTok, Instagram, YouTube)",
+        "A/B testing methodology"
+      ],
+      "sales": [
+        "BANT qualification (Budget, Authority, Need, Timeline)",
+        "MEDDIC framework (Metrics, Economic Buyer, etc.)",
+        "Pipeline management",
+        "Lead scoring"
+      ],
+      "positioning": [
+        "April Dunford methodology",
+        "ICP definition",
+        "Value proposition design",
+        "Competitive differentiation"
+      ]
+    }
+  },
+
+  "execution_instructions": {
+    "workflow": [
+      "1. Read MARKETER_AI_HANDOFF.json for complete context",
+      "2. Start with Phase 0 (setup) - verify everything works",
+      "3. Work through phases sequentially",
+      "4. Commit after each completed task (atomic commits)",
+      "5. Push to GitHub after each phase",
+      "6. Test each feature before moving on",
+      "7. Document any deviations from plan"
+    ],
+    "commit_format": {
+      "pattern": "<type>(<scope>): <description>",
+      "types": ["feat", "fix", "docs", "style", "refactor", "test", "chore"],
+      "examples": [
+        "feat(auth): add login page with Supabase auth",
+        "feat(agents): implement Content Crew with 3 agents",
+        "fix(video): correct frame timing in TikTok composition"
+      ]
+    },
+    "testing_approach": {
+      "unit": "Vitest for utilities and hooks",
+      "integration": "Testing Library for components",
+      "e2e": "Playwright for critical flows",
+      "manual": "Test each feature in browser before commit"
+    },
+    "quality_gates": [
+      "TypeScript compiles without errors",
+      "ESLint passes",
+      "All tests pass",
+      "No console errors in browser",
+      "Mobile responsive",
+      "Loading states present"
+    ]
+  },
+
+  "estimated_timeline": {
+    "phase_0": "2-3 hours",
+    "phase_1": "4-6 hours",
+    "phase_2": "4-6 hours",
+    "phase_3": "3-4 hours",
+    "phase_4": "6-8 hours",
+    "phase_5": "4-6 hours",
+    "phase_6": "6-8 hours",
+    "phase_7": "2-3 hours",
+    "phase_8": "3-4 hours",
+    "phase_9": "3-4 hours",
+    "phase_10": "2-3 hours",
+    "total": "40-55 hours"
+  },
+
+  "success_metrics": [
+    "User can sign up and log in",
+    "User can create a brand profile",
+    "User can run Content Crew and get hooks",
+    "User can generate a TikTok video",
+    "User can view and qualify leads",
+    "User can subscribe to a paid plan",
+    "All pages load under 2 seconds",
+    "Mobile experience is smooth",
+    "No critical bugs in production"
+  ]
+}
